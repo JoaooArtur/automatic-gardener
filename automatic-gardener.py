@@ -1,3 +1,5 @@
+#Esboço da IA, precisa ser refatorada com todos os sensores e logica.
+
 import pandas as pd
 import nltk
 from nltk.corpus import stopwords
