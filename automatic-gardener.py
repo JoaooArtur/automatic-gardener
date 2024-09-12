@@ -1,69 +1,54 @@
 #Esboço da IA, precisa ser refatorada com todos os sensores e logica.
+import numpy as np
+import skfuzzy as fuzz
+import skfuzzy.control as ctrl
+import matplotlib.pyplot as plt
 
-import pandas as pd
-import nltk
-from nltk.corpus import stopwords
-from nltk.tokenize import word_tokenize
-from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.cluster import KMeans
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.chrome.service import Service
-from webdriver_manager.chrome import ChromeDriverManager
 
-pd.reset_option('display.max_colwidth')
-pd.reset_option('display.max_rows')
+humidity = ctrl.Antecedent(np.arange(0, 101, 1), 'humidity')
+temperature = ctrl.Antecedent(np.arange(0, 41, 1), 'temperature')
+sunlight = ctrl.Antecedent(np.arange(0, 101, 1), 'sunlight')
 
-chrome_options = webdriver.ChromeOptions()
-chrome_options.add_argument('--headless')
-chrome_options.add_argument('--no-sandbox')
-chrome_options.add_argument('--disable-dev-shm-usage')
-chrome_options.add_argument('--disable-gpu')
-chrome_options.add_argument('--disable-extensions')
+watering = ctrl.Consequent(np.arange(0, 101, 1), 'watering')
 
-wd = webdriver.Chrome(options=chrome_options)
+humidity['low'] = fuzz.trimf(humidity.universe, [0, 0, 50])
+humidity['medium'] = fuzz.trimf(humidity.universe, [0, 50, 100])
+humidity['high'] = fuzz.trimf(humidity.universe, [50, 100, 100])
 
-url = "https://apps.apple.com/nz/app/trade-me-property-shop-sell/id392567559?see-all=reviews"
+temperature['low'] = fuzz.trimf(temperature.universe, [0, 0, 20])
+temperature['medium'] = fuzz.trimf(temperature.universe, [0, 20, 40])
+temperature['high'] = fuzz.trimf(temperature.universe, [20, 40, 40])
 
-wd.get(url)
+sunlight['low'] = fuzz.trimf(sunlight.universe, [0, 0, 50])
+sunlight['medium'] = fuzz.trimf(sunlight.universe, [0, 50, 100])
+sunlight['high'] = fuzz.trimf(sunlight.universe, [50, 100, 100])
 
-avaliacoes = []
+watering['no'] = fuzz.trimf(watering.universe, [0, 0, 50])
+watering['yes'] = fuzz.trimf(watering.universe, [0, 50, 100])
 
-reviews = wd.find_elements(By.CLASS_NAME, 'we-customer-review')
-for review in reviews:
-    avaliacao = review.find_element(By.CLASS_NAME, 'we-clamp')
-    avaliacoes.append(avaliacao.find_element(By.TAG_NAME, 'p').text)
+rule1 = ctrl.Rule(humidity['low'] & temperature['high'] & sunlight['high'], watering['yes'])
+rule2 = ctrl.Rule(humidity['medium'] & temperature['medium'] & sunlight['medium'], watering['no'])
+rule3 = ctrl.Rule(humidity['high'] | temperature['low'], watering['no'])
 
-wd.quit()
+watering_ctrl = ctrl.ControlSystem([rule1, rule2, rule3])
+watering_sim = ctrl.ControlSystemSimulation(watering_ctrl)
 
-nltk.download('stopwords')
-stop_words = set(stopwords.words('english'))
+def decide_watering(humidity_value, temperature_value, sunlight_value):
+    watering_sim.input['humidity'] = humidity_value
+    watering_sim.input['temperature'] = temperature_value
+    watering_sim.input['sunlight'] = sunlight_value
+    watering_sim.compute()
+    return watering_sim.output['watering']
 
-def preprocessamento(texto):
-    tokens = word_tokenize(texto.lower())
-    return ' '.join([token for token in tokens if token not in stop_words and token.isalpha()])
+humidity_value = 40
+temperature_value = 30
+sunlight_value = 60
 
-avaliacoes_preprocessadas = [preprocessamento(avaliacao) for avaliacao in avaliacoes]
+decision = decide_watering(humidity_value, temperature_value, sunlight_value)
+print(f'Decisão de regar (0 a 100): {decision:.2f}')
 
-palavras_negativas = set(['annoying', 'problem', 'fix', 'fixes', 'frustrating', 'bad','hate'])
-palavras_positivas = set(['love', 'great','good','liked'])
-
-def extrair_features(avaliacao):
-    palavras = word_tokenize(avaliacao.lower())
-    features = {}
-    for palavra in palavras:
-        features[palavra] = True
-    return features
-
-dados = [(extrair_features(preprocessamento(avaliacao)), categorizar_cluster(avaliacao)) for avaliacao in avaliacoes]
-
-tamanho_treinamento = int(len(dados) * 0.50)
-dados_treinamento = dados[:tamanho_treinamento]
-dados_teste = dados[tamanho_treinamento:]
-
-classificador = nltk.NaiveBayesClassifier.train(dados_treinamento)
-
-df = pd.DataFrame({'Texto': avaliacoes, 'Categoria': [classificador.classify(extrair_features(preprocessamento(avaliacao))) for avaliacao in avaliacoes]})
-
-print("Acurácia do classificador:",nltk.classify.accuracy(classificador, dados))
-print(df)
+#humidity.view()
+#temperature.view()
+#sunlight.view()
+#watering.view()
+#plt.show()
