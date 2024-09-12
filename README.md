@@ -43,8 +43,4 @@ O fluxo de dados no projeto começa com a captura de informações pelos sensore
 | Resistor                     | 00,00      |
 
 ## Diagrama do Projeto
-![Diagrama do Projeto](link_do_diagrama)
-
----
-
-Para mais detalhes sobre o projeto, consulte a [documentação completa](link_da_documentação).
+![Diagrama do Projeto](project_diagram.png)
