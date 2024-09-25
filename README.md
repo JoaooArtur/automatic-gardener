@@ -6,9 +6,7 @@
 Este projeto integra tecnologias de Internet das Coisas (IoT) e Inteligência Artificial (IA) com o objetivo de resolver o problema de monitoramento e automação no cuidado de plantas. A solução proposta visa coletar, processar e analisar dados em tempo real sobre as condições de temperatura, umidade e iluminação ao redor das plantas, enviando notificações de alerta quando necessário. A importância desta solução reside na capacidade de melhorar a saúde das plantas, otimizar os recursos e reduzir o desperdício de água e energia.
 
 ## Funcionamento Geral
-O projeto utiliza sensores IoT para capturar dados ambientais, como temperatura, umidade e intensidade de luz. Esses dados são enviados para uma central de processamento, onde algoritmos de IA, incluindo o uso de lógica Fuzzy, realizam a análise. A lógica Fuzzy é aplicada para lidar com incertezas e variabilidades nos dados, permitindo uma tomada de decisão mais flexível em tempo real.
-
-Os algoritmos de IA utilizam técnicas de aprendizado de máquina e lógica Fuzzy para detectar padrões e tomar decisões. Por exemplo, se a umidade estiver abaixo de um certo nível, o sistema poderá acionar automaticamente a irrigação. A integração entre IoT e IA permite que o sistema funcione de maneira autônoma, realizando ações sem intervenção humana.
+O projeto utiliza sensores IoT para capturar dados ambientais, como temperatura, umidade e intensidade de luz. Esses dados são enviados para uma central de processamento, onde algoritmos de IA, incluindo o uso de lógica Fuzzy, realizam a análise. A lógica Fuzzy é aplicada para lidar com incertezas e variabilidades nos dados, permitindo uma tomada de decisão mais flexível em tempo real. Os algoritmos de IA utilizam técnicas de aprendizado de máquina, lógica Fuzzy e, possivelmente, algoritmos genéticos para otimizar as decisões. A integração entre IoT e IA permite que o sistema funcione de maneira autônoma, realizando ações sem intervenção humana.
 
 ## Fluxo de Informações
 O fluxo de dados no projeto começa com a captura de informações pelos sensores IoT posicionados em torno das plantas. Esses dados são transmitidos via rede para um servidor central, onde são processados:
@@ -36,9 +34,10 @@ O fluxo de dados no projeto começa com a captura de informações pelos sensore
 | Item                         | Custo (R$) |
 |------------------------------|------------|
 | Sensor de Temperatura e Umidade DHT11 | 11,90      |
-| Sensor WiFi                  | 25,75      |
+| Esp8266 - Módulo Wifi Esp8266 Nodemcu V3 Ch340                 | 25,75      |
+| Cabo MicroUSB                | 65,00      |
+| Protoboard                   | 20,00      |
 | Sensor de Luz                | 00,00      |
-| Arduino Uno                  | 00,00      |
 | Cabo Jumper                  | 00,00      |
 | Resistor                     | 00,00      |
 
