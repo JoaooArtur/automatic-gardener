@@ -1,3 +1,4 @@
+
 # Projeto Integrado de IoT e IA
 
 **Alunos:** Eduardo Klug, João Artur Belli, Leonardo Rocha, Mateus de Faria da Silva, Mateus Mautone e Renan Iomes.
@@ -11,35 +12,54 @@ O projeto utiliza sensores IoT para capturar dados ambientais, como temperatura,
 ## Fluxo de Informações
 O fluxo de dados no projeto começa com a captura de informações pelos sensores IoT posicionados em torno das plantas. Esses dados são transmitidos via rede para um servidor central, onde são processados:
 
-1. **Captura de Dados:** Sensores coletam informações de temperatura, umidade e intensidade de luz.
-2. **Transmissão:** Os dados são enviados para a central de processamento.
-3. **Processamento:** 
-   - Limpeza e normalização dos dados.
-   - Análise dos dados por algoritmos de IA.
-4. **Ação:** Os resultados são enviados aos atuadores IoT, que realizam ações como ativar a irrigação ou ajustar a iluminação.
-5. **Visualização:** Os dados e ações são apresentados ao usuário por meio de uma interface de visualização.
+- **Captura de Dados:** Sensores coletam informações de temperatura, umidade e intensidade de luz.
+- **Transmissão:** Os dados são enviados para a central de processamento.
+- **Processamento:** 
+  - Limpeza e normalização dos dados.
+  - Análise dos dados por algoritmos de IA.
+- **Ação:** Os resultados são enviados aos atuadores IoT, que realizam ações como ativar a irrigação ou ajustar a iluminação.
+- **Visualização:** Os dados e ações são apresentados ao usuário por meio de uma interface de visualização.
 
 ## Benefícios e Desafios
 **Benefícios:**
+
 - Automação no cuidado de plantas.
 - Otimização de recursos como água e energia.
 - Melhoria na saúde das plantas.
 - Resposta rápida a mudanças nas condições ambientais.
 
 **Desafios:**
+
 - Garantir uma comunicação estável e segura entre os dispositivos IoT e a central de processamento.
 - Desenvolver algoritmos de IA que sejam eficientes e robustos o suficiente para operar em tempo real.
 
 ## Orçamento
-| Item                         | Custo (R$) |
-|------------------------------|------------|
-| Sensor de Temperatura e Umidade DHT11 | 11,90      |
-| Esp8266 - Módulo Wifi Esp8266 Nodemcu V3 Ch340                 | 25,75      |
-| Cabo MicroUSB                | 65,00      |
-| Protoboard                   | 20,00      |
-| Sensor de Luz                | 00,00      |
-| Cabo Jumper                  | 00,00      |
-| Resistor                     | 00,00      |
+| Item                                   | Custo (R$) |
+|----------------------------------------|------------|
+| Sensor de Temperatura e Umidade DHT11  | 11,90      |
+| Esp8266 - Módulo Wifi Esp8266 Nodemcu V3 Ch340 | 25,75      |
+| Cabo MicroUSB                          | 65,00      |
+| Protoboard                             | 20,00      |
+| Sensor de Luz                          | 00,00      |
+| Cabo Jumper                            | 00,00      |
+| Resistor                               | 00,00      |
 
 ## Diagrama do Projeto
 ![Diagrama do Projeto](project_diagram.png)
+
+## URL da IA Publicada
+A IA do projeto está publicada em uma Lambda da AWS com API Gateway. Segue a URL e exemplo de requisição:
+
+**URL POST:**  
+https://6fwmz9m4gf.execute-api.us-east-1.amazonaws.com/default/automatic-gardener-api
+
+**Body:**  
+```json
+{
+    "temp": "value1",
+    "humid": "value2",
+    "light": "value3"
+}
+```
+
+Com este sistema, é possível enviar os dados de temperatura, umidade e iluminação para análise automática, permitindo o controle remoto e a automação do processo de cuidado das plantas.
