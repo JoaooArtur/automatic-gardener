@@ -33,6 +33,59 @@ O fluxo de dados no projeto começa com a captura de informações pelos sensore
 - Garantir uma comunicação estável e segura entre os dispositivos IoT e a central de processamento.
 - Desenvolver algoritmos de IA que sejam eficientes e robustos o suficiente para operar em tempo real.
 
+  **Requisitos:**
+
+  Requisitos Funcionais
+
+1. Coleta de Dados dos Sensores:
+   - O sistema deve ser capaz de coletar dados em tempo real de sensores de umidade do solo, temperatura ambiente e luz solar.
+
+2. Processamento de Dados em Nuvem:
+   - Os dados dos sensores devem ser enviados para um servidor na nuvem para processamento. O servidor deve ser capaz de armazenar e analisar os dados recebidos.
+
+3. Algoritmos de IA:
+   - O sistema deve utilizar algoritmos de Inteligência Artificial para analisar os dados dos sensores e prever as necessidades da planta, como irrigação ou ajuste de iluminação.
+
+4. Notificações ao Usuário Final:
+   - O sistema deve enviar notificações ao usuário final, via aplicativo móvel, com informações sobre as condições das plantas e recomendações de ações manuais (como ajustar a luz ou regar a planta).
+
+5. Histórico de Dados:
+   - O sistema deve manter um histórico das leituras dos sensores e das ações tomadas, permitindo a análise posterior pelo usuário.
+
+6. Interface do Usuário (Aplicativo Móvel):
+   - O usuário final deve poder acessar um aplicativo móvel para monitorar o status das plantas, visualizar dados históricos e receber notificações.
+
+7. Integração com Sistemas Externos (API):
+   - O sistema deve ser capaz de integrar-se com outras plataformas, como serviços de IoT ou bases de dados de terceiros, utilizando APIs padronizadas.
+
+
+
+ Requisitos Não Funcionais
+
+1. Desempenho:
+   - O sistema deve processar dados e executar comandos de forma eficiente, garantindo que a resposta às mudanças nas condições das plantas seja rápida (latência máxima de 5 segundos).
+
+2. Escalabilidade:
+   - O sistema deve ser escalável para suportar várias plantas e sensores, podendo processar grandes volumes de dados conforme o número de usuários e dispositivos conectados aumenta.
+
+3. Segurança:
+   - Os dados transmitidos entre os sensores, o microcontrolador e o servidor na nuvem devem ser protegidos por criptografia para garantir a privacidade e segurança das informações.
+
+4. Confiabilidade:
+   - O sistema deve ser robusto e confiável, com uma taxa mínima de falha. O tempo de atividade esperado para o servidor na nuvem deve ser de pelo menos 99,9%.
+
+5. Portabilidade:
+   - O sistema deve ser compatível com diferentes tipos de sensores e microcontroladores, facilitando a adaptação a novas tecnologias de hardware.
+
+6. Manutenibilidade:
+   - O código do sistema deve ser modular e bem documentado, facilitando a manutenção e a atualização dos componentes (tanto de hardware quanto de software).
+
+7. Usabilidade:
+   - A interface do usuário deve ser intuitiva, permitindo que o usuário final interaja com o sistema facilmente, sem necessidade de conhecimentos técnicos avançados.
+
+8. Disponibilidade:
+   - O sistema deve estar disponível 24 horas por dia, 7 dias por semana, garantindo que os sensores possam coletar e enviar dados continuamente e que o usuário tenha acesso constante às informações.
+
 ## Orçamento
 | Item                                   | Custo (R$) |
 |----------------------------------------|------------|
