@@ -115,4 +115,4 @@ https://6fwmz9m4gf.execute-api.us-east-1.amazonaws.com/default/automatic-gardene
 }
 ```
 
-Com este sistema, é possível enviar os dados de temperatura, umidade e iluminação para análise automática, permitindo o controle remoto e a automação do processo de cuidado das plantas..
+Com este sistema, é possível enviar os dados de temperatura, umidade e iluminação para análise automática, permitindo o controle remoto e a automação do processo de cuidado das plantas.
