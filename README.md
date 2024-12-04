@@ -52,10 +52,7 @@ O fluxo de dados no projeto começa com a captura de informações pelos sensore
 5. Histórico de Dados:
    - O sistema deve manter um histórico das leituras dos sensores e das ações tomadas, permitindo a análise posterior pelo usuário.
 
-6. Interface do Usuário (Aplicativo Móvel):
-   - O usuário final deve poder acessar um aplicativo móvel para monitorar o status das plantas, visualizar dados históricos e receber notificações.
-
-7. Integração com Sistemas Externos (API):
+6. Integração com Sistemas Externos (API):
    - O sistema deve ser capaz de integrar-se com outras plataformas, como serviços de IoT ou bases de dados de terceiros, utilizando APIs padronizadas.
 
 
@@ -79,11 +76,8 @@ O fluxo de dados no projeto começa com a captura de informações pelos sensore
 
 6. Manutenibilidade:
    - O código do sistema deve ser modular e bem documentado, facilitando a manutenção e a atualização dos componentes (tanto de hardware quanto de software).
-
-7. Usabilidade:
-   - A interface do usuário deve ser intuitiva, permitindo que o usuário final interaja com o sistema facilmente, sem necessidade de conhecimentos técnicos avançados.
-
-8. Disponibilidade:
+   - 
+7. Disponibilidade:
    - O sistema deve estar disponível 24 horas por dia, 7 dias por semana, garantindo que os sensores possam coletar e enviar dados continuamente e que o usuário tenha acesso constante às informações.
 
 ## Orçamento
