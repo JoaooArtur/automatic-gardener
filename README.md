@@ -18,7 +18,7 @@ O fluxo de dados no projeto começa com a captura de informações pelos sensore
   - Limpeza e normalização dos dados.
   - Análise dos dados por algoritmos de IA.
 - **Ação:** Os resultados são enviados aos atuadores IoT, que realizam ações como ativar a irrigação ou ajustar a iluminação.
-- **Visualização:** Os dados e ações são apresentados ao usuário por meio de uma interface de visualização.
+- **Visualização:** Os dados e ações são apresentados ao usuário por meio de uma notificação via SMS.
 
 ## Benefícios e Desafios
 **Benefícios:**
